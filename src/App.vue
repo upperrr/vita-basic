@@ -1,18 +1,18 @@
 <template>
   <div>
-    <!-- <div v-if="isVisible" class="red"></div>
-    <div v-if="isVisible==true" class="blue"></div>
-    <div v-else class="black"></div> -->
+<!-- 기존의 HTML 코드 작성 방식 -->
+    <li>{{ sampleArray[0] }}</li>
+    <li>{{ sampleArray[1] }}</li>
+    <li>{{ sampleArray[2] }}</li>
+    <li>{{ sampleArray[3] }}</li><hr/>
 
-    <!-- <div v-if="count > 1" class="red"></div>
-    <div v-else class="blue"></div> -->
-<!-- 
-    <button @click="count++">증가</button>
-    <button @click="count--">감소</button> -->
+<!-- v-for directive를 사용해 보자: key필수(react와 동일) -->
+    <li v-for="item in sampleArray" :key="'item'">{{ item }}</li><hr/>
+    <li v-for="user in otherArray" :key="user.id">{{ user }}</li>
+    <li v-for="user in otherArray" :key="user.id">{{ user.id }} / {{ user.name }}</li><hr/>
 
-    <div v-show="isVisible" class="red"></div>
-    <div v-show="!isVisible" class="blue"></div>
-    <div v-if="isVisible" class="black"></div>
+    <li v-for="(item, index) in sampleArray" :key="'item'" @click="openDialo(index)">{{ item }} / {{ index }}</li>
+    <li v-for="(user, index) in otherArray" :key="user.id">{{ user.id }} / {{ user.name }} / {{ index }}</li>
   </div>
 </template>
 
@@ -21,30 +21,18 @@ export default {
   data () {
 
     return {
-      isVisible: false,
-      count: 0,
+      sampleArray: ['a', 'b', 'c', 'd'],
+      otherArray: [
+        {id: 0,  name: 'john'},
+        {id: 1,  name: 'lim'},
+        {id: 2,  name: 'lrr'},
+        {id: 3,  name: 'dddf'},
+      ]
     }
   },
 }
 </script>
 
-<style scoped>
-.red {
-  width: 100px;
-  height: 100px;
+<style lang="scss" scoped>
 
-  background-color: red;
-}
-.blue {
-  width: 100px;
-  height: 100px;
-
-  background-color: blue;
-}
-.black {
-  width: 100px;
-  height: 100px;
-
-  background-color: black;
-}
 </style>
