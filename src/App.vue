@@ -1,44 +1,50 @@
 <template>
   <div>
-    {{rawHtml}}
-  </div>
-  <div>
-    {{rawHtml2}}
-  </div>
-  <h1 v-html="rawHtml2"></h1>
+    <!-- <div v-if="isVisible" class="red"></div>
+    <div v-if="isVisible==true" class="blue"></div>
+    <div v-else class="black"></div> -->
 
- <!--함축형 사용하면 아래와 똑같다 -->
-  <h2 v-bind:class="{active: isActive}">클래스 바인딩 테스트 클래스</h2>   
-  <h2 :class="{active: isActive}">클래스 바인딩 테스트 클래스</h2>
-  <button @click="change">버튼</button> 
+    <!-- <div v-if="count > 1" class="red"></div>
+    <div v-else class="blue"></div> -->
+<!-- 
+    <button @click="count++">증가</button>
+    <button @click="count--">감소</button> -->
 
-  <h3 style="color: orange; font-size: 24px;">스타일 바인딩 테스트</h3>
-  <!-- vue.js style binding -->
-  <h3 :style="{color: contColor, fontSize: fontSize + 'px'}">스타일 바인딩 테스트</h3>
+    <div v-show="isVisible" class="red"></div>
+    <div v-show="!isVisible" class="blue"></div>
+    <div v-if="isVisible" class="black"></div>
+  </div>
 </template>
 
 <script>
 export default {
   data () {
+
     return {
-      rawHtml: '이것은 텍스트입니다',
-      rawHtml2: '<span style="color: red">이것은 발간색 이어야 함</span>',
-      isActive: false, //default 값은 뭘로 시작해도 상관 없다. 
-      contColor: '#888888',
-      fontSize: 48,
+      isVisible: false,
+      count: 0,
     }
-  },
-  methods: {
-    change() {
-      this.isActive = !this.isActive
-      console.log('Button clicked!');
-    },
   },
 }
 </script>
 
 <style scoped>
-h2.active {
-  color: green;
+.red {
+  width: 100px;
+  height: 100px;
+
+  background-color: red;
+}
+.blue {
+  width: 100px;
+  height: 100px;
+
+  background-color: blue;
+}
+.black {
+  width: 100px;
+  height: 100px;
+
+  background-color: black;
 }
 </style>
